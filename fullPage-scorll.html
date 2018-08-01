@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全屏滚动</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #full-page{
+            width:100%;
+            position: absolute;
+            top:0;
+        }
+        #full-page div{
+            width:100%;
+            height:1000px;
+            text-align: center;
+        }
+        #model-one{
+            background-color: red;
+        }
+        #model-two{
+            background-color: black;
+        }
+        #model-three{
+            background-color: yellow;
+        }
+        #model-four{
+            background-color: aqua;
+        }
+        #scroll-bz{
+            width:100%;
+            height:100px;
+            position: fixed;
+            top:100px;
+            z-index: 99;
+        }
+        #scroll-bz span{
+            padding:5px 12px;
+            background-color: blueviolet;
+            display: inline-block;
+        }
+        .default-bg-color{
+            background-color: white;
+        }
+        .set-bg-color{
+            transition-property: background-color ;
+            background-color: white !important;
+            transition-duration: 0.2s;
+        }
+    </style>
+</head>
+<body>
+<div id="scroll-bz">
+    <span id="span1" class="default-bg-color">1</span>
+    <span id="span2">2</span>
+    <span id="span3">3</span>
+    <span id="span4">4</span>
+</div>
+<div id="full-page">
+    <div id="model-one">第一模块</div>
+    <div id="model-two">第二模块</div>
+    <div id="model-three">第三模块</div>
+    <div id="model-four">第四模块</div>
+</div>
+<script src="../jquery/jquery-3.3.1.js"></script>
+<script>
+    $(window).scroll(function(){
+        if(0<window.scrollY&& window.scrollY <=1000){
+            $("#span1").removeClass("default-bg-color")
+            $("#span1").addClass("set-bg-color");
+            $("#span1").siblings().removeClass("set-bg-color");
+        }
+        if(1000<window.scrollY && window.scrollY <=2000){
+            $("#span2").addClass("set-bg-color");
+            $("#span2").siblings().removeClass("set-bg-color");
+        }
+        if(2000<window.scrollY && window.scrollY<=3000){
+            $("#span3").addClass("set-bg-color");
+            $("#span3").siblings().removeClass("set-bg-color");
+        }
+        if(3000<window.scrollY && window.scrollY<=4000){
+            $("#span4").addClass("set-bg-color");
+            $("#span4").siblings().removeClass("set-bg-color");
+        }
+    });
+
+   // $(document.body).parent().css("overflow","hidden");
+</script>
+
+
+
+
+</body>
+</html>
